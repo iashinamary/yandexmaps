@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mapFragment">
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="ru.netology.mapshw.fragment.MapFragment"
+        android:label="map_fragment"
+        tools:layout="@layout/map_fragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="ru.netology.mapshw.fragment.PlacesFragment"
+        android:label="ListFragment" >
+        <action
+            android:id="@+id/action_listFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/placeDialog"
+        android:name="ru.netology.mapshw.fragment.AddPlaceDialog"
+        android:label="AddPlaceDialog" />
+    <dialog
+        android:id="@+id/deletePlaceDialog"
+        android:name="ru.netology.mapshw.fragment.DeletePlaceDialog"
+        android:label="DeletePlaceDialog" />
+</navigation>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name" translatable="false">MapsHW</string>
+    <string name="location_permission">Location permission required</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="enter_name">Enter name</string>
+    <string name="empty">Empty</string>
+    <string name="to_places">To places</string>
+
+</resources>

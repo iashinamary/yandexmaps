@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_permission">Необходимо разрешение геолокации</string>
+    <string name="delete">Удалить</string>
+    <string name="edit">Изменить</string>
+    <string name="enter_name">Введите название</string>
+    <string name="empty">Пусто</string>
+    <string name="to_places">К местам</string>
+</resources>
