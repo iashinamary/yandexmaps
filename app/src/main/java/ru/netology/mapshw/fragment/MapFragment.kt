@@ -34,6 +34,7 @@ import ru.netology.mapshw.R
 import ru.netology.mapshw.databinding.MapFragmentBinding
 import ru.netology.mapshw.databinding.PlaceBinding
 import ru.netology.mapshw.viewmodel.MapViewModel
+import com.yandex.mapkit.Animation
 
 class MapFragment: Fragment() {
 
@@ -131,7 +132,7 @@ class MapFragment: Fragment() {
                             val placeBinding = PlaceBinding.inflate(layoutInflater)
                             placeBinding.title.text = place.name
                             collection.addPlacemark(
-                                Point(place.lat, place.long),
+                                Point(place.latitude, place.longitude),
                                 ViewProvider(placeBinding.root)
                             ).apply {
                                 userData = place.id
@@ -162,23 +163,33 @@ class MapFragment: Fragment() {
             }
         }
 
+        binding.plus.setOnClickListener {
+            binding.map.map.move(
+                CameraPosition(
+                    binding.map.map.cameraPosition.target,
+                    binding.map.map.cameraPosition.zoom + 1, 0.0f, 0.0f
+                ),
+                Animation(Animation.Type.SMOOTH, 1F),
+                null
+            )
+        }
+
+        binding.minus.setOnClickListener {
+            binding.map.map.move(
+                CameraPosition(
+                    binding.map.map.cameraPosition.target,
+                    binding.map.map.cameraPosition.zoom - 1, 0.0f, 0.0f
+                ),
+                Animation(Animation.Type.SMOOTH, 1F),
+                null,
+            )
+        }
+
+
         binding.location.setOnClickListener{
             permissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }
 
-        requireActivity().addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.map_menu, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean =
-                if (menuItem.itemId == R.id.list) {
-                    findNavController().navigate(R.id.action_mapFragment_to_listFragment)
-                    true
-                } else {
-                    false
-                }
-            }, viewLifecycleOwner)
 
         return binding. root
 

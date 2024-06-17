@@ -38,8 +38,8 @@ class AddPlaceDialog : DialogFragment() {
                     Place(
                         id = requireArguments().getLong(ID_KEY),
                         name = text,
-                        lat = requireArguments().getDouble(LAT_KEY),
-                        long = requireArguments().getDouble(LONG_KEY),
+                        latitude = requireArguments().getDouble(LAT_KEY),
+                        longitude = requireArguments().getDouble(LONG_KEY),
                     )
                 )
             }

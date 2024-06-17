@@ -1,6 +1,7 @@
 package ru.netology.mapshw.viewmodel
 
 import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.map
@@ -9,7 +10,7 @@ import ru.netology.mapshw.db.PlaceDatabase
 import ru.netology.mapshw.dto.Place
 import ru.netology.mapshw.entity.PlaceEntity
 
-class MapViewModel(context: Application): ViewModel() {
+class MapViewModel(context: Application): AndroidViewModel(context) {
 
     private val dao = PlaceDatabase.getInstance(context).placeDao()
 

@@ -9,15 +9,15 @@ data class PlaceEntity constructor(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     val name: String,
-    val lat: Double,
-    val long: Double,
+    val latitude: Double,
+    val longitude: Double,
     ) {
     fun toDto(): Place =
         Place(
             id = id,
             name = name,
-            lat = lat,
-            long = long,
+            latitude = latitude,
+            longitude = longitude,
         )
 
     companion object {
@@ -25,8 +25,8 @@ data class PlaceEntity constructor(
             PlaceEntity(
                 id = dto.id,
                 name = dto.name,
-                lat = dto.lat,
-                long = dto.long,
+                latitude = dto.latitude,
+                longitude = dto.longitude,
             )
     }
 }

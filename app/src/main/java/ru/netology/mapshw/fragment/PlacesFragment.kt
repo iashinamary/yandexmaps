@@ -33,8 +33,8 @@ class PlacesFragment: Fragment() {
             override fun onClick(place: Place) {
                 findNavController().navigate(
                     R.id.action_listFragment_to_mapFragment, bundleOf(
-                        MapFragment.LAT_KEY to place.lat,
-                        MapFragment.LONG_KEY to place.long
+                        MapFragment.LAT_KEY to place.latitude,
+                        MapFragment.LONG_KEY to place.longitude
                     )
                 )
             }
@@ -44,7 +44,7 @@ class PlacesFragment: Fragment() {
             }
 
             override fun onEdit(place: Place) {
-                AddPlaceDialog.createBundle(lat = place.lat, long = place.long, id = place.id)
+                AddPlaceDialog.createBundle(lat = place.latitude, long = place.longitude, id = place.id)
             }
         })
 
