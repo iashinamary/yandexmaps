@@ -18,9 +18,9 @@ class AddPlaceDialog : DialogFragment() {
         private const val ID_KEY = "ID_KEY"
         private const val LAT_KEY = "LAT_KEY"
         private const val LONG_KEY = "LONG_KEY"
-        fun createBundle(lat: Double, long: Double, id: Long? = null): Bundle = bundleOf(
-            LAT_KEY to lat, LONG_KEY to long, ID_KEY to id
-        )
+        fun createBundle(lat: Double, long: Double, id: Long? = null) = AddPlaceDialog().apply {
+            arguments = bundleOf(LAT_KEY to lat, LONG_KEY to long, ID_KEY to id)
+        }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

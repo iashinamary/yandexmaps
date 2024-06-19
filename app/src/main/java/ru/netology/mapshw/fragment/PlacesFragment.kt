@@ -40,11 +40,11 @@ class PlacesFragment: Fragment() {
             }
 
             override fun onDelete(place: Place) {
-                viewModel.deletePlaceById(place.id)
+                DeletePlaceDialog.newInstance(id = place.id).show(childFragmentManager, "deleteFragment")
             }
 
             override fun onEdit(place: Place) {
-                AddPlaceDialog.createBundle(lat = place.latitude, long = place.longitude, id = place.id)
+                AddPlaceDialog.createBundle(lat = place.latitude, long = place.longitude, id = place.id).show(childFragmentManager, "addPlaceFragment")
             }
         })
 

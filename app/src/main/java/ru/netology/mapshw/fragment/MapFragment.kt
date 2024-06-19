@@ -48,7 +48,8 @@ class MapFragment: Fragment() {
         override fun onMapTap(map: Map, point: Point)  = Unit
 
         override fun onMapLongTap(map: Map, point: Point) {
-            findNavController().navigate(R.id.placeDialog, AddPlaceDialog.createBundle(point.latitude, point.longitude))
+            AddPlaceDialog.createBundle(point.latitude, point.longitude)
+                .show(childFragmentManager, null)
         }
 
     }
@@ -69,8 +70,10 @@ class MapFragment: Fragment() {
 
     private val viewModel by viewModels<MapViewModel>()
 
-    private val placeTapListener = MapObjectTapListener { mapObject, _ ->
-        findNavController().navigate(R.id.deletePlaceDialog)
+    private val placeTapListener = MapObjectTapListener { mapObject, point ->
+        val id = mapObject.userData as Long
+        val deleteFragment = DeletePlaceDialog.newInstance(id)
+        deleteFragment.show(childFragmentManager, "deleteDialog")
         true
     }
 
